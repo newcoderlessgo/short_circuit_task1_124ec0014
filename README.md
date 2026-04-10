@@ -1,52 +1,41 @@
-# short_circuit_task1_124ec0014
-// C++ code
-//
-int LEDR=11;
-int LEDY=8;
-int LEDG=4;
-int PUSH_BUTTON=12;
-void setup()
-{
-  pinMode(LEDR, OUTPUT);
-  pinMode(LEDY, OUTPUT);
-  pinMode(LEDG, OUTPUT);
-  pinMode(PUSH_BUTTON, INPUT);
-  Serial.begin(9600);
-}
+📌 Overview
 
-void loop()
-{
-  int memory= digitalRead(PUSH_BUTTON);
-  if (memory==0){
-    digitalWrite(LEDG, HIGH);
-    delay(4000);
-     digitalWrite(LEDG, LOW);
-    delay(2000);
-    digitalWrite(LEDY, HIGH);
-    delay(4000);
-    digitalWrite(LEDY, LOW);
-    delay(2000);
-    digitalWrite(LEDR, HIGH);
-    delay(4000);
-    digitalWrite(LEDR, LOW);
-    delay(2000);
-  }
-  else if(memory==1) {
-    Serial.println("Please WAIT, PEDESTRIAN CROSSING");
-    digitalWrite(LEDR, HIGH);
-    delay(6000);
-    
-     digitalWrite(LEDR, LOW);
-    delay(2000);
-    digitalWrite(LEDY, HIGH);
-    delay(4000);
-    digitalWrite(LEDY, LOW);
-    delay(2000);
-    digitalWrite(LEDG, HIGH);
-    delay(4000);
-    digitalWrite(LEDG, LOW);
-    delay(2000);
-    
-  }
-  Serial.println(memory);
-}
+This project simulates a traffic light system with a pedestrian crossing button using Arduino.
+
+Normal operation cycles through Green → Yellow → Red
+
+When the push button is pressed, the system switches to pedestrian mode, stopping traffic and allowing safe crossing
+
+🧰 Components Required
+
+-Arduino Uno (or compatible board)
+
+-3 LEDs (Red, Yellow, Green)
+
+-1 Push Button
+
+-Resistors (220Ω for LEDs, 10kΩ for button if needed)
+
+-Breadboard & Jumper Wire
+
+⚙️ Working Principle
+
+🚦 Normal Mode (Button NOT Pressed)
+
+-Green ON → 4 sec
+
+-Yellow ON → 4 sec
+
+-Red ON → 4 sec
+
+-Repeats continuously
+
+🚶 Pedestrian Mode (Button Pressed)
+
+-Displays message: "Please WAIT, PEDESTRIAN CROSSING"
+
+-Red ON → 6 sec (vehicles stop)
+
+-Yellow ON → 4 sec
+
+-Green ON → 4 sec
